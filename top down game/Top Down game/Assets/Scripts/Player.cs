@@ -4,19 +4,36 @@ public class Player : Personagem
 {
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-    
+
+    private bool andando = false;
+
     public Transform arma;
 
-    private bool andando;
+    
     
    void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
+
+
+
   void Update()
     {
         andando = false;
+
+        if (arma.rotation.eulerAngles.z > -90 
+            && arma.rotation.eulerAngles.z < 90)
+        {
+            spriteRenderer.flipX = false;
+        }
+        
+        if (arma.rotation.eulerAngles.z > 90 
+            && arma.rotation.eulerAngles.z < 270)
+        {
+            spriteRenderer.flipX = true;
+        }
 
 
         if (Input.GetKey(KeyCode.A))
