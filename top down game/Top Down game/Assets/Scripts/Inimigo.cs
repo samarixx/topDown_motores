@@ -33,7 +33,6 @@ public class Inimigo : Personagem
         if (posicaoDoPlayer == null)
         {
             posicaoDoPlayer =  GameObject.Find("Player").transform;
-           // posicaoDoPlayer =  GameObject.FindGameObjectsWithTag("Player")[0].transform;
         }
         
         raioDeVisao = _visaoCollider2D.radius;
@@ -81,8 +80,6 @@ public class Inimigo : Personagem
 
     public void desativa()
     {
-        //desativa o objeto do Inimigo
-        //gameObject.SetActive(false);
         Destroy(gameObject);
         Debug.Log("Teste...");
     }
@@ -91,13 +88,9 @@ public class Inimigo : Personagem
     {
         if (collision.gameObject.CompareTag("Player") && getVida() > 0)
         {
-            // Causa dano ao Player
             int novaVida = collision.gameObject.GetComponent<Personagem>().getVida() - getDano();
             collision.gameObject.GetComponent<Personagem>().setVida(novaVida);
 
-            //collision.gameObject.GetComponent<Personagem>().recebeDano(getDano());
-            
-            //sera a vida do inimigo
             setVida(0);
         }
     }
